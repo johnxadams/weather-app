@@ -12,7 +12,7 @@ import "./scss/_layout.scss";
 function App() {
   const [data, setData] = useState({});
   const [location, setLocation] = useState("");
-  const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${apiKey}`;
+  const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${apiKey}&units=metric`;
 
   const searchLocation = (e) => {
     if (e.key === "Enter") {
@@ -24,7 +24,6 @@ function App() {
   };
   const handleChange = (e) => {
     setLocation(e.target.value);
-    console.log(e.target.value);
   };
   const current = new Date();
   const date = `${current.getDate()} ${current.getMonth() + 1}`;
@@ -45,7 +44,7 @@ function App() {
             <p>{data.name}</p>
           </div>
           <div className="temperature">
-            <h3>50 °C</h3>
+            {data.main && <h3>{data.main.temp}°</h3>}
           </div>
           <div className="description">
             <p>Sunny Clear</p>
