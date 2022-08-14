@@ -28,7 +28,7 @@ function App() {
             <p>Leipzig</p>
           </div>
           <div className="temperature">
-            <p>50 °C</p>
+            <h3>50 °C</h3>
           </div>
           <div className="description">
             <p>Sunny Clear</p>
