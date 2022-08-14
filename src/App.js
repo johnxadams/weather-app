@@ -57,8 +57,8 @@ function App() {
             </div>
             <div className="bottom">
               <div className="feels">
+                {data.main && <p> {data.main.feels_like}°</p>}
                 <p>Feels Like</p>
-                <p>60 °C</p>
               </div>
               <div className="humidity">
                 {data.main ? (
@@ -67,7 +67,7 @@ function App() {
                 <p>Humidity</p>
               </div>
               <div className="wind">
-                <p>20 km/h</p>
+                {data.wind && <p>{data.wind.speed} km/h</p>}
                 <p>Wind Speed</p>
               </div>
             </div>
