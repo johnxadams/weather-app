@@ -1,13 +1,15 @@
 import React, { useState } from "react";
-import axios from "axios";
-import "./App.css";
+// url
+import { url } from "./api-url";
 
+import axios from "axios";
+// styles
+import "./App.css";
 import "./scss/_layout.scss";
 
 function App() {
   const [data, setData] = useState({});
   const [location, setLocation] = useState("");
-
 
   const searchLocation = (e) => {};
   return (
@@ -36,17 +38,16 @@ function App() {
         <div className="main"></div>
         <div className="bottom">
           <div className="feels">
+            <p>Feels Like</p>
             <p>60 °C</p>
           </div>
-          <div className="bottom">
-            <div className="humidity">
-              <p>40%</p>
-              <p>Humidity</p>
-            </div>
-            <div className="wind">
-              <p>20 km/h</p>
-              <p>Wind Speed</p>
-            </div>
+          <div className="humidity">
+            <p>40%</p>
+            <p>Humidity</p>
+          </div>
+          <div className="wind">
+            <p>20 km/h</p>
+            <p>Wind Speed</p>
           </div>
         </div>
       </section>

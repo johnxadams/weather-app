@@ -38,7 +38,7 @@ body {
   }
   section {
     max-width: 700px;
-    height: 500px;
+    height: 600px;
     margin: auto;
     padding: 0 1rem;
     position: relative;
@@ -57,6 +57,18 @@ body {
           //   transform-origin: 0 0;
           transform: rotate(270deg);
         }
+      }
+    }
+    .bottom {
+      width: 90%;
+      margin: 2rem auto;
+      padding: 1rem;
+      background-color: rgba(255, 255, 255, 0.2);
+      @include flex-justify-align-dir(space-evenly, flex-start, row);
+      div {
+        width: 8rem;
+        height: 10rem;
+        background-color: #f8f8f844;
       }
     }
   }
