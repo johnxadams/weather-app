@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+
 // data
 import { apiKey } from "./api-key";
 import { monthData } from "./data";
@@ -17,7 +18,7 @@ function App() {
   const [data, setData] = useState({});
   // const [hourlyData, setHourlyData] = useState({});
   const [location, setLocation] = useState("");
-  const [metric, setMetric] = useState("");
+  // const [metric, setMetric] = useState("");
 
   const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${apiKey}&units=metric`;
 
