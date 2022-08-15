@@ -10,10 +10,14 @@ import axios from "axios";
 import "./App.css";
 import "./scss/_layout.scss";
 
+//icons
+import { WiThermometer, WiHumidity, WiStrongWind } from "react-icons/wi";
+
 function App() {
   const [data, setData] = useState({});
-  const [hourlyData, setHourlyData] = useState({});
+  // const [hourlyData, setHourlyData] = useState({});
   const [location, setLocation] = useState("");
+  const [metric, setMetric] = useState("");
 
   const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${apiKey}&units=metric`;
 
@@ -23,6 +27,7 @@ function App() {
         setData(response.data);
         console.log(" url1 ", response.data);
       });
+      setLocation("");
     }
   };
 
@@ -30,23 +35,9 @@ function App() {
     setLocation(e.target.value);
   };
 
+  // get date
   const current = new Date();
   const date = `${current.getDate()} ${monthData[current.getMonth() + 1]}`;
-
-  const dateToTime = (date) =>
-    date.toLocaleString("en-US", {
-      hour: "numeric",
-      minute: "numeric",
-    });
-
-  const dateString = "2019-05-05T10:30:00Z";
-  const userOffset = new Date().getTimezoneOffset() * 60 * 1000;
-  const localDate = new Date(dateString);
-  const utcDate = new Date(localDate.getTime() + userOffset);
-
-  // console.log(
-  //   `This is time: ${dateToTime(utcDate)} (${dateToTime(localDate)} Your Time)`
-  // );
 
   return (
     <div className="app">
@@ -65,12 +56,13 @@ function App() {
             <p>{data.name}</p>
             {/* <p>{data.id}</p> */}
           </div>
-          <div className="temperature">
-            {data.main && <h3>{data.main.temp}°</h3>}
-          </div>
+
           {data.name && (
-            <div className="description">
-              {data.weather && <p>{data.weather[0].main}</p>}
+            <div className="temperature">
+              {data.main && <h3>{Math.floor(data.main.temp)}°</h3>}
+              <div className="description">
+                {data.weather && <p>{data.weather[0].main}</p>}
+              </div>
             </div>
           )}
         </div>
@@ -81,17 +73,24 @@ function App() {
             </div>
             <div className="bottom">
               <div className="feels">
-                {data.main && <p> {data.main.feels_like}°</p>}
+                {data.main && <p>{Math.floor(data.main.feels_like)}°</p>}
+                <div className="wi-bottom">
+                  <WiThermometer />
+                </div>
                 <p>Feels Like</p>
               </div>
               <div className="humidity">
-                {data.main ? (
-                  <p className="bold">{data.main.humidity}%</p>
-                ) : null}
+                {data.main ? <p>{data.main.humidity}%</p> : null}
+                <div className="wi-bottom">
+                  <WiHumidity />
+                </div>
                 <p>Humidity</p>
               </div>
               <div className="wind">
-                {data.wind && <p>{data.wind.speed} km/h</p>}
+                {data.wind && <p>{Math.floor(data.wind.speed)} km/h</p>}
+                <div className="wi-bottom">
+                  <WiStrongWind />
+                </div>
                 <p>Wind Speed</p>
               </div>
             </div>
