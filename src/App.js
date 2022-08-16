@@ -24,11 +24,13 @@ function App() {
     if (e.key === "Enter") {
       axios.get(url).then((response) => {
         setData(response.data);
-        console.log(" url1 ", response.data);
+        console.log(" fetched data: ", response.data);
       });
       setLocation("");
     }
   };
+
+  const icon = {};
 
   const handleChange = (e) => {
     setLocation(e.target.value);
@@ -36,20 +38,22 @@ function App() {
 
   // get date
   const current = new Date();
-  const currentUTC = current.toUTCString();
   const date = `${current.getUTCDate()} ${
     monthData[current.getUTCMonth() + 1]
   }`;
+  //get time
   const time = current.toUTCString();
   const timeHours = parseInt(time.slice(-12, -10));
-  const timezoneOffsetHours = data.timezone / 3600;
+  // I do Math.floor insdie timezoneOffsetHours because some timeZones devided by 3600, comes with a dezima.
+  // e.g. Adelaide timezone 34200 / 360 = 9,5
+  const timezoneOffsetHours = Math.floor(data.timezone / 3600);
   const foreignTimezoneHour = timeHours + timezoneOffsetHours;
   const worldClock = foreignTimezoneHour.toString() + time.slice(-10, -7);
-  console.log("time ", time);
-  console.log("timeHours as a number ", timeHours);
-  console.log("timezoneOffsetHours: ", timezoneOffsetHours);
-  // console.log("newTimeHour", foreignTimezoneHour);
-  console.log("worldClock: ", worldClock);
+  // console.log("time: ", time);
+  // console.log("timeHours as a number:  ", timeHours);
+  // console.log("timezoneOffsetHours: ", timezoneOffsetHours);
+  // console.log("foreignTimezoneHour: ", foreignTimezoneHour);
+  // console.log("worldClock: ", worldClock);
 
   return (
     <div className="app">
@@ -72,7 +76,13 @@ function App() {
             <div className="temperature">
               {data.main && <h3>{Math.floor(data.main.temp)}°</h3>}
               <div className="description">
-                {data.weather && <p>{data.weather[0].main}</p>}
+                {/* <p>{ data.weather[0].id}</p> */}
+                {data.weather && (
+                  <img
+                    src={`http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`}
+                    alt="weatherIcon"
+                  />
+                )}
               </div>
             </div>
           )}
@@ -80,6 +90,7 @@ function App() {
         {data.name && (
           <>
             <div className="main">
+              <p>{worldClock}</p>
               <p> Today, {date}</p>
             </div>
             <div className="bottom">
