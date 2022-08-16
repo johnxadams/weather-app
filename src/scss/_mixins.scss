@@ -1,0 +1,6 @@
+@mixin flex-justify-align-dir ($jc, $ai, $dir) {
+    display: flex;
+    justify-content: $jc;
+    align-items: $ai;
+    flex-direction: $dir;
+}

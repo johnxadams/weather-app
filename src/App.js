@@ -16,9 +16,7 @@ import { WiThermometer, WiHumidity, WiStrongWind } from "react-icons/wi";
 
 function App() {
   const [data, setData] = useState({});
-  // const [hourlyData, setHourlyData] = useState({});
   const [location, setLocation] = useState("");
-  // const [metric, setMetric] = useState("");
 
   const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${apiKey}&units=metric`;
 
@@ -38,7 +36,20 @@ function App() {
 
   // get date
   const current = new Date();
-  const date = `${current.getDate()} ${monthData[current.getMonth() + 1]}`;
+  const currentUTC = current.toUTCString();
+  const date = `${current.getUTCDate()} ${
+    monthData[current.getUTCMonth() + 1]
+  }`;
+  const time = current.toUTCString();
+  const timeHours = parseInt(time.slice(-12, -10));
+  const timezoneOffsetHours = data.timezone / 3600;
+  const foreignTimezoneHour = timeHours + timezoneOffsetHours;
+  const worldClock = foreignTimezoneHour.toString() + time.slice(-10, -7);
+  console.log("time ", time);
+  console.log("timeHours as a number ", timeHours);
+  console.log("timezoneOffsetHours: ", timezoneOffsetHours);
+  // console.log("newTimeHour", foreignTimezoneHour);
+  console.log("worldClock: ", worldClock);
 
   return (
     <div className="app">
@@ -55,7 +66,6 @@ function App() {
         <div className="top">
           <div className="location">
             <p>{data.name}</p>
-            {/* <p>{data.id}</p> */}
           </div>
 
           {data.name && (
