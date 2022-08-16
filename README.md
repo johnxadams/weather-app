@@ -1,6 +1,7 @@
 ## Weather App
 
 #### About Project
+
 I've been wanting to create a weather app for a while. This is my first attempt to build a simple weather app. It displays the temperature, date, wind speed, etc. It should also meet my expectations in terms of design and aesthetics.
 
 <div align="center">
@@ -10,9 +11,8 @@ I've been wanting to create a weather app for a while. This is my first attempt 
 ![yet to come](.img/)
 
 ---
+
 </div>
-
-
 
 ##### Developed With
 
@@ -38,3 +38,4 @@ LinkedIn: [John Adams](https://www.linkedin.com/in/john-adams-56391923b/)
 
 - [Visual Studio Code](https://code.visualstudio.com/)
 - [Current Weather Data API](https://openweathermap.org/current)
+- [Unsplash IMAGES](https://unsplash.com/)

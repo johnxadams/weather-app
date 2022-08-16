@@ -70,15 +70,21 @@ body {
         box-shadow: 0 30px 45px rgba(0, 0, 0, 0.226);
         @include flex-justify-align-dir(center, center, column);
         h3 {
-          font-size: 3rem;
+          font-size: 4rem;
         }
       }
-      .description {
+      .weather-icon-div {
         position: relative;
         // right: -85%;
-        p {
+        // background-color: #f8f8f821;
+        width: 4rem;
+        height: 4rem;
+        margin-top: -2.5rem;
+        @include flex-justify-align-dir(center, center, row);
+        img {
           transform: rotate(0deg);
-          margin-bottom: 2rem;
+          width: 150%;
+          opacity: 0.9;
         }
       }
     }

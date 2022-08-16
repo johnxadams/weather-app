@@ -54,6 +54,7 @@ function App() {
   // console.log("timezoneOffsetHours: ", timezoneOffsetHours);
   // console.log("foreignTimezoneHour: ", foreignTimezoneHour);
   // console.log("worldClock: ", worldClock);
+  console.log(date);
 
   return (
     <div className="app">
@@ -75,8 +76,7 @@ function App() {
           {data.name && (
             <div className="temperature">
               {data.main && <h3>{Math.floor(data.main.temp)}°</h3>}
-              <div className="description">
-                {/* <p>{ data.weather[0].id}</p> */}
+              <div className="weather-icon-div">
                 {data.weather && (
                   <img
                     src={`http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`}
