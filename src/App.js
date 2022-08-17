@@ -17,6 +17,7 @@ import { WiThermometer, WiHumidity, WiStrongWind } from "react-icons/wi";
 function App() {
   const [data, setData] = useState({});
   const [location, setLocation] = useState("");
+  const [bgWeather, setBgWeather] = useState("clear");
 
   const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${apiKey}&units=metric`;
 
@@ -25,12 +26,13 @@ function App() {
       axios.get(url).then((response) => {
         setData(response.data);
         console.log(" fetched data: ", response.data);
+        setBgWeather(response.data.weather?.[0].main.toLowerCase());
       });
       setLocation("");
     }
   };
 
-  const icon = {};
+  // const icon = {};
 
   const handleChange = (e) => {
     setLocation(e.target.value);
@@ -54,10 +56,13 @@ function App() {
   // console.log("timezoneOffsetHours: ", timezoneOffsetHours);
   // console.log("foreignTimezoneHour: ", foreignTimezoneHour);
   // console.log("worldClock: ", worldClock);
-  console.log(date);
 
+  // const bgWeather = data.weather?.[0].main.toLowerCase();
+
+  // console.log(bgWeather);
+  // console.log(data.weather?.[0].main.toLowerCase());
   return (
-    <div className="app">
+    <div className={`app ${bgWeather}`}>
       <div className="search">
         <input
           value={location}
