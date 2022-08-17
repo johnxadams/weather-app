@@ -17,7 +17,7 @@ import { WiThermometer, WiHumidity, WiStrongWind } from "react-icons/wi";
 function App() {
   const [data, setData] = useState({});
   const [location, setLocation] = useState("");
-  const [bgWeather, setBgWeather] = useState("mist");
+  const [bgWeather, setBgWeather] = useState("clouds");
 
   const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${apiKey}&units=metric`;
 
@@ -28,11 +28,10 @@ function App() {
         console.log(" fetched data: ", response.data);
         setBgWeather(response.data.weather?.[0].main.toLowerCase());
       });
+
       setLocation("");
     }
   };
-
-  // const icon = {};
 
   const handleChange = (e) => {
     setLocation(e.target.value);
@@ -101,22 +100,22 @@ function App() {
             <div className="bottom">
               <div className="feels">
                 {data.main && <p>{Math.floor(data.main.feels_like)}°</p>}
-                <div className="wi-bottom">
-                  <WiThermometer />
+                <div className="weather-icon-bottom">
+                  <WiThermometer className="wi" />
                 </div>
                 <p>Feels Like</p>
               </div>
               <div className="humidity">
                 {data.main ? <p>{data.main.humidity}%</p> : null}
-                <div className="wi-bottom">
-                  <WiHumidity />
+                <div className="weather-icon-bottom">
+                  <WiHumidity className="wi" />
                 </div>
                 <p>Humidity</p>
               </div>
               <div className="wind">
                 {data.wind && <p>{Math.floor(data.wind.speed)} km/h</p>}
-                <div className="wi-bottom">
-                  <WiStrongWind />
+                <div className="weather-icon-bottom">
+                  <WiStrongWind className="wi" />
                 </div>
                 <p>Wind Speed</p>
               </div>
