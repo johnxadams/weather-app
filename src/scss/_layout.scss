@@ -146,11 +146,26 @@ body {
   // content: "";
   background: url(../img/clear-weather.jpg) no-repeat center center/cover;
 }
+.rain::before {
+  // content: "";
+  background: url(../img/rain-weather.jpg) no-repeat center center/cover;
+}
 .clouds::before {
   // content: "";
   background: url(../img/sun-through-clouds.jpg) no-repeat center center/cover;
 }
-
+.drizzle::before {
+  // content: "";
+  background: url(../img/drizzle-weather.jpg) no-repeat center center/cover;
+}
+.snow::before {
+  // content: "";
+  background: url(../img/snow-weather.jpg) no-repeat center center/cover;
+}
+.mist::before {
+  // content: "";
+  background: url(../img/mist-weather.jpg) no-repeat center center/cover;
+}
 .bold {
   font-weight: bold;
 }

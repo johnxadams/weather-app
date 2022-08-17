@@ -17,7 +17,7 @@ import { WiThermometer, WiHumidity, WiStrongWind } from "react-icons/wi";
 function App() {
   const [data, setData] = useState({});
   const [location, setLocation] = useState("");
-  const [bgWeather, setBgWeather] = useState("clear");
+  const [bgWeather, setBgWeather] = useState("mist");
 
   const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${apiKey}&units=metric`;
 
